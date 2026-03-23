@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0d0d2b">
+
+    <com.example.lab2_inclass_23521836.GameView
+        android:id="@+id/gameView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- MENU -->
+    <LinearLayout android:id="@+id/menuScreen"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical" android:gravity="center" android:padding="32dp"
+        android:visibility="gone">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🐦 Flappy Vy" android:textSize="52sp" android:textStyle="bold"
+            android:textColor="#FFFFFF" android:shadowColor="#AA000000"
+            android:shadowDx="3" android:shadowDy="4" android:shadowRadius="8"
+            android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="TAP · FLY · SURVIVE" android:textSize="13sp"
+            android:textColor="#884ECDC4" android:layout_marginBottom="28dp"/>
+        <ImageView android:id="@+id/ivMenuBird"
+            android:layout_width="130dp" android:layout_height="130dp"
+            android:src="@drawable/hinhthe"
+            android:background="@drawable/circle_border_teal"
+            android:scaleType="centerCrop" android:elevation="8dp"
+            android:layout_marginBottom="28dp" android:contentDescription="Bird"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:background="@drawable/badge_gold"
+            android:paddingLeft="24dp" android:paddingRight="24dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp"
+            android:layout_marginBottom="36dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🏆  BEST: " android:textColor="#FFD700"
+                android:textSize="16sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvMenuHighScore"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textColor="#FFD700"
+                android:textSize="22sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <Button android:id="@+id/btnPlay"
+            android:layout_width="220dp" android:layout_height="62dp"
+            android:text="▶  PLAY" android:textSize="22sp" android:textStyle="bold"
+            android:textColor="#FFFFFF" android:background="@drawable/btn_teal_rounded"
+            android:elevation="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Tap to fly" android:textSize="13sp"
+            android:textColor="#554ECDC4" android:layout_marginTop="14dp"/>
+    </LinearLayout>
+
+    <!-- READY -->
+    <FrameLayout android:id="@+id/readyScreen"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:visibility="gone" android:clickable="true" android:focusable="true">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top" android:layout_marginTop="120dp"
+            android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/panel_dark_blur"
+            android:paddingLeft="40dp" android:paddingRight="40dp"
+            android:paddingTop="20dp" android:paddingBottom="20dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="GET READY!" android:textSize="34sp" android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Tap to start flying ✦" android:textSize="14sp"
+                android:textColor="#884ECDC4" android:layout_marginTop="6dp"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- HUD -->
+    <FrameLayout android:id="@+id/hud"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="32dp" android:paddingLeft="20dp"
+        android:paddingRight="20dp" android:visibility="gone">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="start" android:background="@drawable/panel_dark_blur"
+            android:paddingLeft="20dp" android:paddingRight="20dp"
+            android:paddingTop="8dp" android:paddingBottom="8dp">
+            <TextView android:id="@+id/tvScore"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textSize="44sp" android:textStyle="bold"
+                android:textColor="#FFFFFF" android:shadowColor="#88000000"
+                android:shadowDx="2" android:shadowDy="3" android:shadowRadius="5"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="end" android:orientation="vertical" android:gravity="center"
+            android:background="@drawable/panel_dark_blur"
+            android:paddingLeft="16dp" android:paddingRight="16dp"
+            android:paddingTop="8dp" android:paddingBottom="8dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="BEST" android:textSize="11sp" android:textColor="#664ECDC4"/>
+            <TextView android:id="@+id/tvHudBest"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0" android:textSize="22sp" android:textStyle="bold"
+                android:textColor="#FFD700"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- GAME OVER -->
+    <FrameLayout android:id="@+id/gameOverScreen"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#BB000020" android:visibility="gone">
+        <LinearLayout android:id="@+id/goPanel"
+            android:layout_width="320dp" android:layout_height="wrap_content"
+            android:layout_gravity="center" android:orientation="vertical"
+            android:gravity="center" android:background="@drawable/panel_game_over"
+            android:paddingLeft="36dp" android:paddingRight="36dp"
+            android:paddingTop="32dp" android:paddingBottom="32dp">
+            <TextView android:id="@+id/tvMedal"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🥇" android:textSize="52sp" android:layout_marginBottom="4dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="GAME OVER" android:textSize="38sp" android:textStyle="bold"
+                android:textColor="#FF6B6B" android:shadowColor="#88FF6B6B"
+                android:shadowDx="0" android:shadowDy="0" android:shadowRadius="12"
+                android:layout_marginBottom="16dp"/>
+            <TextView android:id="@+id/tvNewBest"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🎉  NEW BEST!" android:textSize="16sp" android:textStyle="bold"
+                android:textColor="#1a1a2e" android:background="@drawable/badge_new_best"
+                android:paddingLeft="20dp" android:paddingRight="20dp"
+                android:paddingTop="6dp" android:paddingBottom="6dp"
+                android:visibility="gone" android:layout_marginBottom="16dp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center"
+                android:layout_marginBottom="28dp">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="SCORE" android:textSize="11sp" android:textColor="#664ECDC4"/>
+                    <TextView android:id="@+id/tvGoScore"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textSize="48sp" android:textStyle="bold"
+                        android:textColor="#4ECDC4"/>
+                </LinearLayout>
+                <View android:layout_width="1.5dp" android:layout_height="60dp"
+                    android:background="#224ECDC4"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="BEST" android:textSize="11sp" android:textColor="#66FFD700"/>
+                    <TextView android:id="@+id/tvGoBest"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="0" android:textSize="48sp" android:textStyle="bold"
+                        android:textColor="#FFD700"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center">
+                <Button android:id="@+id/btnRestart"
+                    android:layout_width="0dp" android:layout_height="54dp"
+                    android:layout_weight="1" android:text="▶  Retry"
+                    android:textSize="17sp" android:textStyle="bold"
+                    android:textColor="#FFFFFF" android:background="@drawable/btn_teal_rounded"
+                    android:layout_marginEnd="8dp"/>
+                <Button android:id="@+id/btnMenu"
+                    android:layout_width="0dp" android:layout_height="54dp"
+                    android:layout_weight="1" android:text="🏠 Menu"
+                    android:textSize="17sp" android:textColor="#BBFFFFFF"
+                    android:background="@drawable/btn_ghost_rounded"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FlappyVy" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/sky_dark</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/teal</item>
+        <item name="colorAccent">@color/gold</item>
+    </style>
+
+    <!-- Match the expected name from default project if necessary,
+         but the user explicitly asked to replace the existing ones with Theme.FlappyVy -->
+    <style name="Theme.Lab2_InClass_23521836" parent="Theme.FlappyVy" />
+</resources>
